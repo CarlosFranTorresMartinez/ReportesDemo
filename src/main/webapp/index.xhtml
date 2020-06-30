@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Reportes Demo</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panelGrid columns="2">
+                <p:outputLabel value="CULTIVO POR TIPO"/>
+                <p:selectOneMenu value="#{sectorC.model.IDSEC}">
+                    <f:selectItems value="#{sectorC.lista}" var="lista_Sector" itemLabel="#{lista_Sector.NOMSEC}" itemValue="#{lista_Sector.IDSEC}"/>
+                </p:selectOneMenu>
+                <p:commandButton value="GENERAR REPORTES" ajax="false" actionListener="#{reportC.reportCultivoxTipo()}"/>
+                <p:commandButton value="GENERAR REPORTES" ajax="false" actionListener="#{reportC.reportCultivoAsignados(sectorC.model.IDSEC)}"/>
+            </p:panelGrid>
+        </h:form>
+
+        <h:form id="id_lista_AsignarCultivo">
+            <p:dataTable id="id_dtblAsignacionCultivo" 
+                         widgetVar="wgvAsignacionCultivo"
+                         value="#{asignacionCultivoC.lista_AsignacionCultivo}"
+                         var="lista_AsignacionCultivo"
+                         expandableRowGroups="true"
+                         sortBy="#{lista_AsignacionCultivo.NOMSEC}">
+
+                <p:headerRow>
+                    <p:column headerText="NOMBRE DEL SECTOR" colspan="2">
+                        <h:outputText value="#{lista_AsignacionCultivo.NOMSEC}" />
+                    </p:column>
+                </p:headerRow>
+                <p:column headerText="TIPO DEL CULTIVO" groupRow="true" >
+                    <h:outputText value="#{lista_AsignacionCultivo.TIPCUL}" />
+                </p:column>
+
+                <p:column headerText="NOMBRE DEL CULTIVO">
+                    <h:outputText value="#{lista_AsignacionCultivo.NOMCUL}" />
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+    </h:body>
+    <script type="text/javascript">
+        PrimeFaces.locales['es'] = {
+            closeText: 'Cerrar',
+            prevText: 'Anterior',
+            nextText: 'Siguiente',
+            monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+            dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+            dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+            dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+            weekHeader: 'Semana',
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: '',
+            timeOnlyTitle: 'Sólo hora',
+            timeText: 'Tiempo',
+            hourText: 'Hora',
+            minuteText: 'Minuto',
+            secondText: 'Segundo',
+            currentText: 'Fecha actual',
+            ampm: false,
+            month: 'Mes',
+            week: 'Semana',
+            day: 'Día',
+            allDayText: 'Todo el día'
+        };
+    </script>
+</html>
+

@@ -1,0 +1,10 @@
+model\AsignacionCultivo.class
+controller\AsignacionCultivoC.class
+model\Sector.class
+dao\SectorImpl.class
+dao\Conexion.class
+controller\SectorC.class
+dao\Crud.class
+dao\AsignacionCultivoImpl.class
+dao\ReporteD.class
+controller\ReportesC.class
