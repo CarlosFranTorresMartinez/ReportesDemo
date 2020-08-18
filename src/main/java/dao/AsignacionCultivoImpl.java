@@ -75,4 +75,20 @@ public class AsignacionCultivoImpl extends Conexion implements Crud<AsignacionCu
         return lista;
     }
 
+    public String sector(int IDSEC) {
+        this.conectar();
+        String sector = null;
+        String sql = "select NOMSEC from SECTOR where IDSEC=" + IDSEC + "";
+        try {
+            Statement st = this.getCn().createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                sector = rs.getString("NOMSEC");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e);
+        }
+        return sector;
+    }
+
 }
